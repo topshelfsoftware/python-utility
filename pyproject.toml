@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "trp_custom_util"
+version = "0.1.0"
+description = "A collection of python utilities"
+license="MIT"
+authors = [
+    "Tanner P."
+]
+repository = "https://github.com/trpubins/python-utility"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+boto3 = "^1.26"
+coloredlogs = "^15"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
