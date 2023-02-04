@@ -38,6 +38,10 @@ Helper functions for data retrieval and common programmatic actions.
 
 Define custom exceptions.
 
+### `io`
+
+Support for processing input/output..
+
 ### `log`
 
 Supports logging functionality including creation of a logger and managing handlers.
