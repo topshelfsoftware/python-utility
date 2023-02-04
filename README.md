@@ -49,3 +49,7 @@ Supports logging functionality including creation of a logger and managing handl
 ### `platform`
 
 Provides a clean way to identify platform OS.
+
+### `test`
+
+A utility for standardizing unit testing.
