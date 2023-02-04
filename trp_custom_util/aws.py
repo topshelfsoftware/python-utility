@@ -3,7 +3,8 @@
 from boto3.session import Session as Boto3Session
 from botocore.client import BaseClient
 
-from trp_custom_util.common import fmt_json, get_logger
+from trp_custom_util.common import fmt_json
+from trp_custom_util.log import get_logger
 logger = get_logger(__name__)
 
 
