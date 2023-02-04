@@ -1,5 +1,7 @@
+SHELL = /bin/bash
+
 .PHONY: build
 
 build:
-	source .venv/bin/activate
+	. .venv/bin/activate
 	poetry build --format wheel
