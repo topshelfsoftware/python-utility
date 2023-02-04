@@ -8,7 +8,7 @@ A collection of python utilities.
 2. Activate python environment with `poetry`.
 3. `poetry build --format wheel`
 
-See the `Makefile`.
+A `Makefile` is provided to build the wheel and copy it into a local PyPI directory. This requires a file in the project folder named `local_pypi_dir.txt` - the contents of which are a single line defining the path to a local directory. Remember to update the `PKG_VER` variable in the `Makefile` for each new package version.
 
 ## Tagging
 
