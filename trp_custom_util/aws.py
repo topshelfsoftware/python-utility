@@ -33,51 +33,55 @@ def create_boto3_client(service_name: str,
         raise e
 
 
-def get_ssm_value(client: BaseClient, name: str) -> str:
+def get_ssm_value(name: str, region: str = "us-west-1") -> str:
     """Retrieve the value of an SSM parameter.
 
     Parameters
     ----------
-    client: botocore.client.BaseClient
-        SSM client.
-    
     name: str
         Name of the SSM parameter.
+    
+    region: str, optional
+        Region where service abides.
+        Default is `us-west-1`.
     """
     try:
+        ssm_client = create_boto3_client(service_name="ssm", region=region)
         logger.debug(f"getting ssm: {name}")
 
-        ssm_resp = client.get_parameter(Name=name)
+        ssm_resp = ssm_client.get_parameter(Name=name)
         logger.debug(f"resp: {fmt_json(ssm_resp)}")
 
         val = ssm_resp['Parameter']['Value']
         logger.debug(f"return: {val}")
         return val
     except Exception as e:
-        logger.error(f"failed to get secret: {name}. Reason: {e}")
+        logger.error(f"failed to retrieve ssm parameter: {name}. Reason: {e}")
         raise e
 
 
-def get_secret_value(client: BaseClient, secret_id: str) -> str:
+def get_secret_value(secret_id: str, region: str = "us-west-1") -> str:
     """Retrieve the value of a managed secret.
 
     Parameters
     ----------
-    client: botocore.client.BaseClient
-        SecretsManager client.
-    
     secret_id: str
         The ARN or name of the secret to retrieve.
+    
+    region: str, optional
+        Region where service abides.
+        Default is `us-west-1`.
     """
     try:
+        secret_client = create_boto3_client(service_name="secretsmanager", region=region)
         logger.debug(f"getting secret: {secret_id}")
 
-        secret_resp = client.get_secret_value(SecretId=secret_id)
+        secret_resp = secret_client.get_secret_value(SecretId=secret_id)
         logger.debug(f"resp: {fmt_json(secret_resp)}")
 
         val = secret_resp["SecretString"]
         logger.debug("return: <redacted>")
         return val
     except Exception as e:
-        logger.error(f"failed to get secret: {secret_id}. Reason: {e}")
+        logger.error(f"failed to retrieve secret: {secret_id}. Reason: {e}")
         raise e
