@@ -9,4 +9,4 @@ PKG_VER=0.1.0
 build:
 	. .venv/bin/activate
 	poetry build --format wheel
-	cp dist/$(PKG_NAME)-$(PKG_VER)*.whl $(LOCAL_PYPI_DIR)/$(PKG_NAME)
+	cp dist/$(PKG_NAME)-$(PKG_VER)*.whl $(LOCAL_PYPI_DIR)
