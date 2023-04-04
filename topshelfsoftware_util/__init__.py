@@ -1,9 +1,9 @@
 import logging
 
-from trp_custom_util.aws import logger as aws_logger
-from trp_custom_util.common import logger as common_logger
-from trp_custom_util.io import logger as io_logger
-from trp_custom_util.platform import logger as platform_logger
+from topshelfsoftware_util.aws import logger as aws_logger
+from topshelfsoftware_util.common import logger as common_logger
+from topshelfsoftware_util.io import logger as io_logger
+from topshelfsoftware_util.platform import logger as platform_logger
 
 PACKAGE_NAME = "trp-custom-util"
 LOG_LEVEL = logging.INFO

@@ -2,7 +2,7 @@
 
 import platform
 
-from trp_custom_util.log import get_logger
+from topshelfsoftware_util.log import get_logger
 logger = get_logger(__name__)
 
 

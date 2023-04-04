@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "trp_custom_util"
+name = "topshelfsoftware_util"
 version = "0.1.0"
 description = "A collection of python utilities"
 license="MIT"
 authors = [
     "Tanner P."
 ]
-repository = "https://github.com/trpubins/python-utility"
+repository = "https://github.com/topshelfsoftware/python-utility"
 
 [tool.poetry.dependencies]
 python = "^3.7"
