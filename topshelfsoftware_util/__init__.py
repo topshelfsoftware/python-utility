@@ -1,5 +1,5 @@
 import logging
-from typing import List
+from typing import List, Union
 
 from topshelfsoftware_util.aws import logger as aws_logger
 from topshelfsoftware_util.common import logger as common_logger
@@ -25,7 +25,7 @@ def get_package_loggers() -> List[logging.Logger]:
     return loggers
 
 
-def _set_logger_levels(level: logging._Level):
+def _set_logger_levels(level: Union[int, str]):
     loggers = get_package_loggers()
     for logger in loggers:
         logger.setLevel(level)
