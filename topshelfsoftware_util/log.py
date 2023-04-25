@@ -40,7 +40,8 @@ def get_logger(name: str,
     logger = logging.getLogger(name)
     logger.setLevel(level)
     logger.propagate = propagate
-    coloredlogs.install(level=level, logger=logger, fmt=DEFAULT_FMT, datefmt=DATE_FMT)
+    coloredlogs.install(level=level, logger=logger, stream=sys.stdout,
+                        fmt=DEFAULT_FMT, datefmt=DATE_FMT)
     return logger
 
 
