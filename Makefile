@@ -1,16 +1,34 @@
-SHELL=/bin/bash
-FILE=local_pypi_dir.txt
-LOCAL_PYPI_DIR=$(shell cat ${FILE})
-PKG_NAME=topshelfsoftware_util
-PKG_VER=0.1.0
+SHELL := /bin/bash
+MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
+MAKEFILE_DIR := $(dir $(MAKEFILE_PATH))
+CWD := $(notdir $(patsubst %/,%,$(dir $(MAKEFILE_PATH))))
+VENV_DIR := $(join $(MAKEFILE_DIR),.venv)
+REQ_FILE_PATH := $(join $(MAKEFILE_DIR),requirements.txt)
 
-.PHONY: build
+LOCAL_PYPI_FILE := $(join $(MAKEFILE_DIR),local_pypi_dir.txt)
+LOCAL_PYPI_DIR := $(shell cat ${LOCAL_PYPI_FILE})
+PKG_NAME := topshelfsoftware_util
+PKG_VER := 0.1.0
+
+# function to activate the python virtual env
+activate = . $(VENV_DIR)/bin/activate && $1
+
+.PHONY: build copy install
 
 all: build copy
 
 build:
-	. .venv/bin/activate
-	poetry build --format wheel
+	$(call activate,poetry build --format wheel)
 
 copy:
 	cp dist/$(PKG_NAME)-$(PKG_VER)*.whl $(LOCAL_PYPI_DIR)
+
+install:
+	@echo "Setting up Python virtual env"
+	python3.9 -m venv $(VENV_DIR)
+	
+	@echo "Upgrading pip"
+	$(call activate,python -m pip install --upgrade pip)
+
+	@echo "Installing project dependencies"
+	$(call activate,python -m pip install -r $(REQ_FILE_PATH))
