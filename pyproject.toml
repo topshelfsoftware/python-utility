@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "A collection of python utilities"
 license="MIT"
 authors = [
-    "Tanner P."
+    "Tanner Pubins"
 ]
 repository = "https://github.com/topshelfsoftware/python-utility"
 
