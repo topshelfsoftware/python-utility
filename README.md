@@ -27,10 +27,19 @@ Simply navigate to the same folder as this `README`, and run the following comma
 make
 ```
 
-This command activates the virtual environment with `poetry` and builds the package as a wheel.
+This command activates the virtual environment with `poetry`, builds the package as a wheel and copies it the local PyPI repository.
 
->IMPORTANT❗
->Remember to update the `PKG_VER` variable in the `Makefile` for each new package version.
+## Versioning
+
+This package uses Semantic Versioning 2.0.0 to describe MAJOR.MINOR.PATCH releases.
+
+IMPORTANT❗
+Search the project for the existing package version and update in the following places prior to building the package and deploying the lambda layer:
+
+- `PKG_VER` variable in the project `Makefile`
+- `version` in the poetry `pyproject.toml`
+- `PackageVersion` parameter in the `samconfig.toml`
+- `topshelfsoftware-util` package in the `lambda_layer/no_deps/requirements.txt`
 
 ## Tagging
 
@@ -48,4 +57,4 @@ git push origin <version>
 
 ## Available Modules
 
-See a list of [available-modules](./docs/README.md#available-modules).
+See the list of [available modules](./docs/README.md#available-modules).
