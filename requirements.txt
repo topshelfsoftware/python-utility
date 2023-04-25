@@ -1,0 +1,3 @@
+boto3>=1.26
+coloredlogs>=15
+poetry
