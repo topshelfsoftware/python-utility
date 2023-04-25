@@ -6,11 +6,11 @@
 
 SHELL := /bin/bash
 MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
-MAKEFILE_DIR := $(dir $(MAKEFILE_PATH))
+MAKEFILE_DIR := $(realpath $(dir $(MAKEFILE_PATH)))
 CWD := $(notdir $(patsubst %/,%,$(dir $(MAKEFILE_PATH))))
-VENV_DIR := $(join $(MAKEFILE_DIR),../.venv)
+VENV_DIR := $(MAKEFILE_DIR)/../.venv
 ifndef ARTIFACTS_DIR
-	ARTIFACTS_DIR := $(join $(MAKEFILE_DIR),artifacts)
+	ARTIFACTS_DIR := $(MAKEFILE_DIR)/artifacts
 endif
 
 # function to activate the python virtual env
@@ -18,14 +18,14 @@ activate = . $(VENV_DIR)/bin/activate && $1
 
 # build target
 build-TopshelfsoftwareUtilLayer:
-	@echo "Building custom python lambda layer with makefile: $(MAKEFILE_PATH)"
+	@echo "Building lambda layer with makefile: $(MAKEFILE_PATH)"
 	mkdir -p "$(ARTIFACTS_DIR)/python"
 
 	@echo "Upgrading pip"
 	$(call activate,python -m pip install --upgrade pip)
 
 	@echo "Installing python packages ** without ** dependencies"
-	$(call activate,python -m pip install -r no_deps/requirements.txt -t "$(ARTIFACTS_DIR)/python" --upgrade --no-deps)
+	$(call activate,python -m pip install -r $(MAKEFILE_DIR)/no_deps/requirements.txt -t "$(ARTIFACTS_DIR)/python" --upgrade --no-deps)
 
 	@echo "Installing python packages ** with ** dependencies"
-	$(call activate,python -m pip install -r deps/requirements.txt -t "$(ARTIFACTS_DIR)/python" --upgrade)
+	$(call activate,python -m pip install -r $(MAKEFILE_DIR)/deps/requirements.txt -t "$(ARTIFACTS_DIR)/python" --upgrade)

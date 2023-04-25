@@ -1,12 +1,12 @@
 SHELL := /bin/bash
 MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
-MAKEFILE_DIR := $(dir $(MAKEFILE_PATH))
+MAKEFILE_DIR := $(realpath $(dir $(MAKEFILE_PATH)))
 CWD := $(notdir $(patsubst %/,%,$(dir $(MAKEFILE_PATH))))
-VENV_DIR := $(join $(MAKEFILE_DIR),.venv)
-REQ_FILE_PATH := $(join $(MAKEFILE_DIR),requirements.txt)
+VENV_DIR := $(MAKEFILE_DIR)/.venv
+REQ_FP := $(MAKEFILE_DIR)/requirements.txt
 
-LOCAL_PYPI_FILE := $(join $(MAKEFILE_DIR),local_pypi_dir.txt)
-LOCAL_PYPI_DIR := $(shell cat ${LOCAL_PYPI_FILE})
+LOCAL_PYPI_FP := $(MAKEFILE_DIR)/local_pypi_dir.txt
+LOCAL_PYPI_DIR := $(shell cat ${LOCAL_PYPI_FP})
 PKG_NAME := topshelfsoftware_util
 PKG_VER := 0.1.0
 
@@ -21,7 +21,7 @@ build:
 	$(call activate,poetry build --format wheel)
 
 copy:
-	cp dist/$(PKG_NAME)-$(PKG_VER)*.whl $(LOCAL_PYPI_DIR)
+	cp $(MAKEFILE_DIR)/dist/$(PKG_NAME)-$(PKG_VER)*.whl $(LOCAL_PYPI_DIR)
 
 install:
 	@echo "Setting up Python virtual env"
@@ -31,4 +31,4 @@ install:
 	$(call activate,python -m pip install --upgrade pip)
 
 	@echo "Installing project dependencies"
-	$(call activate,python -m pip install -r $(REQ_FILE_PATH))
+	$(call activate,python -m pip install -r $(REQ_FP))
