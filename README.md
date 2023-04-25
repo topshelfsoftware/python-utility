@@ -15,7 +15,7 @@ A `Makefile` is provided to standardize building and publishing the Python packa
 Install project dependencies by running the following command one time
 
 ```bash
-# install project deps like poetry
+# install project deps such as poetry
 make install
 ```
 
@@ -48,30 +48,4 @@ git push origin <version>
 
 ## Available Modules
 
-### `aws`
-
-Facilitates interaction with AWS using boto3 clients.
-
-### `common`
-
-Helper functions for data retrieval and common programmatic actions.
-
-### `exceptions`
-
-Define custom exceptions.
-
-### `io`
-
-Support for processing input/output..
-
-### `log`
-
-Supports logging functionality including creation of a logger and managing handlers.
-
-### `platform`
-
-Provides a clean way to identify platform OS.
-
-### `test`
-
-A utility for standardizing unit testing.
+See a list of [available-modules](./docs/README.md#available-modules).
