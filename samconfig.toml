@@ -1,31 +1,30 @@
 # Usage (specify env):
-#   sam deploy --config-env [devl|prod]
+#   sam deploy \
+#       --config-env [devl|prod] \
+#       --s3-bucket [bucket_name] \
+#       --tags CustomerId={customer_id} ProjectId={project_id}
 
 version=0.1
 [default]
 [default.deploy]
 [devl.deploy.parameters]
-region = "us-west-1"
-s3_bucket = "topshelfsoftware-sam-deploy-devl"
+region = "us-west-2"
 s3_prefix = "topshelfsoftware-util-layer"
 stack_name = "topshelfsoftware-util-layer"
 confirm_changeset = false
 capabilities = "CAPABILITY_IAM"
 tags = "CustomerId=00000"
 parameter_overrides = [
-    "CustomerId=00000",
     "PackageVersion=v0.1.0"
 ]
 
-# [prod.deploy.parameters]
-# region = "us-west-1"
-# s3_bucket = "topshelfsoftware-sam-deploy-prod"
-# s3_prefix = "topshelfsoftware-util-layer"
-# stack_name = "topshelfsoftware-util-layer"
-# confirm_changeset = true
-# capabilities = "CAPABILITY_IAM"
-# tags = "CustomerId=00000"
-# parameter_overrides = [
-#     "CustomerId=00000",
-#     "PackageVersion=v0.1.0"
-# ]
+[prod.deploy.parameters]
+region = "us-west-2"
+s3_prefix = "topshelfsoftware-util-layer"
+stack_name = "topshelfsoftware-util-layer"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+tags = "CustomerId=00000"
+parameter_overrides = [
+    "PackageVersion=v0.1.0"
+]

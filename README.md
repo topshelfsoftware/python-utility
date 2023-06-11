@@ -27,7 +27,7 @@ Simply navigate to the same folder as this `README`, and run the following comma
 make
 ```
 
-This command activates the virtual environment with `poetry`, builds the package as a wheel and copies it the local PyPI repository.
+This command activates the virtual environment with `poetry`, builds the package as a wheel and copies it to the local PyPI repository.
 
 ## Versioning
 
