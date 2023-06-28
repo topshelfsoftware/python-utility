@@ -8,32 +8,30 @@ from topshelfsoftware_util.log import get_logger
 logger = get_logger(__name__)
 
 
-def create_boto3_client(service_name: str,
-                        region: str = "us-west-1") -> BaseClient:
+def create_boto3_client(service_name: str, region: str = None) -> BaseClient:
     """Create a low-level service client by name.
 
     Parameters
     ----------
     service_name: str
         Name of the AWS service.
-        
+    
     region: str, optional
         Region where service abides.
-        Default is `us-west-1`.
+        Default is `None`.
     """
     try:
         logger.debug(f"creating boto3 client: {service_name}")
-        session = Boto3Session()
-        return session.client(
-            service_name=service_name,
-            region_name=region
-        )
+        session = Boto3Session(region_name=region)
+        client = session.client(service_name=service_name)
+        logger.debug("boto3 client successfully created")
     except Exception as e:
         logger.error(f"failed to create client: {service_name}. Reason: {e}")
         raise e
+    return client
 
 
-def get_ssm_value(name: str, region: str = "us-west-1") -> str:
+def get_ssm_value(name: str, region: str = None) -> str:
     """Retrieve the value of an SSM parameter.
 
     Parameters
@@ -43,7 +41,7 @@ def get_ssm_value(name: str, region: str = "us-west-1") -> str:
     
     region: str, optional
         Region where service abides.
-        Default is `us-west-1`.
+        Default is `None`.
     """
     try:
         ssm_client = create_boto3_client(service_name="ssm", region=region)
@@ -60,7 +58,7 @@ def get_ssm_value(name: str, region: str = "us-west-1") -> str:
         raise e
 
 
-def get_secret_value(secret_id: str, region: str = "us-west-1") -> str:
+def get_secret_value(secret_id: str, region: str = None) -> str:
     """Retrieve the value of a managed secret.
 
     Parameters
@@ -70,7 +68,7 @@ def get_secret_value(secret_id: str, region: str = "us-west-1") -> str:
     
     region: str, optional
         Region where service abides.
-        Default is `us-west-1`.
+        Default is `None`.
     """
     try:
         secret_client = create_boto3_client(service_name="secretsmanager", region=region)
