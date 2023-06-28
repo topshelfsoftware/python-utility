@@ -6,7 +6,7 @@ from topshelfsoftware_util.common import logger as common_logger
 from topshelfsoftware_util.io import logger as io_logger
 from topshelfsoftware_util.platform import logger as platform_logger
 
-PACKAGE_NAME = "trp-custom-util"
+PACKAGE_NAME = "topshelfsoftware-util"
 LOG_LEVEL = logging.INFO
 
 
