@@ -14,7 +14,9 @@ stack_name = "topshelfsoftware-util-layer"
 confirm_changeset = false
 capabilities = "CAPABILITY_IAM"
 tags = "CustomerId=00000"
-parameter_overrides = []
+parameter_overrides = [
+    "PackageVersion=v0.2.0"
+]
 
 [prod.deploy.parameters]
 region = "us-west-2"
@@ -23,4 +25,6 @@ stack_name = "topshelfsoftware-util-layer"
 confirm_changeset = true
 capabilities = "CAPABILITY_IAM"
 tags = "CustomerId=00000"
-parameter_overrides = []
+parameter_overrides = [
+    "PackageVersion=v0.2.0"
+]
