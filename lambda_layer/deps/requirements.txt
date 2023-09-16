@@ -1,1 +1,1 @@
-coloredlogs>=15
+topshelfsoftware-util @ git+https://github.com/topshelfsoftware/python-utility.git@v1.0.0

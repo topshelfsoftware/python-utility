@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "topshelfsoftware_util"
-version = "0.2.0"
+version = "1.0.0"
 description = "A collection of python utilities"
 license="MIT"
 authors = [
@@ -11,8 +11,7 @@ repository = "https://github.com/topshelfsoftware/python-utility"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-boto3 = "^1.26"
-coloredlogs = "^15"
+coloredlogs = "^15"  # MIT license
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

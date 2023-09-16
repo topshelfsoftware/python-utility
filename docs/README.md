@@ -2,10 +2,6 @@
 
 ## Available Modules
 
-### `aws`
-
-Facilitates interaction with AWS using boto3 clients.
-
 ### `common`
 
 Helper functions for data retrieval and common programmatic actions.
@@ -18,6 +14,10 @@ Define custom exceptions.
 
 Support for processing input/output.
 
+### `json`
+
+Work with JSON data.
+
 ### `log`
 
 Supports logging functionality including creation of a logger and managing handlers.
@@ -25,7 +25,3 @@ Supports logging functionality including creation of a logger and managing handl
 ### `platform`
 
 Provides a clean way to identify platform OS.
-
-### `test`
-
-A utility for standardizing unit testing.
