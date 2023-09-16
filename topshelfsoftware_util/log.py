@@ -1,7 +1,6 @@
 """Supports logging functionality including creation of a logger."""
 
 import logging
-import os
 import sys
 from typing import Union
 
@@ -94,8 +93,3 @@ def clear_root_handlers() -> None:
     root = logging.getLogger()
     root.handlers = []
     return
-
-
-def mod_fname(fname: str) -> str:
-    """Modify a file name by removing the `.py` extension."""
-    return os.path.basename(fname).replace(".py", "")
