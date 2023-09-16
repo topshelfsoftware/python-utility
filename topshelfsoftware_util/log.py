@@ -2,7 +2,7 @@
 
 import logging
 import sys
-from typing import Union
+from typing import TextIO, Union
 
 import coloredlogs
 
@@ -12,18 +12,24 @@ DEFAULT_FMT = "[%(asctime)s] [%(levelname)8s] {%(name)s:%(lineno)d} %(message)s"
 
 def get_logger(name: str,
                level: Union[int, str] = logging.INFO,
+               stream: TextIO = sys.stderr,
                propagate: bool = False) -> logging.Logger:
-    """Configures a logger for modules by setting the log level 
-    and format. Colors the terminal output.
+    """Configures a logger for modules by setting the log level,
+    stream handler and format. Colors the terminal output.
 
     Parameters
     ----------
-    name : str
+    name: str
         The name of the logger to retrieve.
 
-    level : logging._Level, optional
+    level: logging._Level, optional
         The logging level to set the logger.
         Default is `logging.INFO`.
+
+    stream: TextIO, optional
+        The stream where log messages should be written to
+        (a file-like object).
+        Default adds stream to stderr.
 
     propagate: bool, optional
         Determines if logging messages are passed to handlers
@@ -39,8 +45,9 @@ def get_logger(name: str,
     logger = logging.getLogger(name)
     logger.setLevel(level)
     logger.propagate = propagate
-    coloredlogs.install(level=level, logger=logger, stream=sys.stdout,
-                        fmt=DEFAULT_FMT, datefmt=DATE_FMT)
+    if stream is not None:
+        coloredlogs.install(level=level, logger=logger, stream=stream,
+                            fmt=DEFAULT_FMT, datefmt=DATE_FMT)
     return logger
 
 
@@ -69,22 +76,27 @@ def create_console_handler(fmt: str = DEFAULT_FMT,
     return handler
 
 
-def add_console_handler(logger: logging.Logger,
-                        handler: logging.Handler = None) -> None:
-    """Add console handler to the provided logger.
+def add_log_stream(logger: logging.Logger,
+                   level: Union[int, str] = logging.INFO,
+                   stream: TextIO = sys.stderr) -> None:
+    """Send logs to an IO stream.
     
     Parameters
     ----------
     logger: logging.Logger
         An existing logger.
 
-    handler: logging.Handler, optional
-        Handler to add to the provided logger. If none is provided,
-        a StreamHandler will be created and added to the logger.
+    level: logging._Level, optional
+        The logging level to set the logger.
+        Default is `logging.INFO`.
+    
+    stream: TextIO, optional
+        The stream where log messages should be written to
+        (a file-like object).
+        Default adds stream to stderr.
     """
-    if handler is None:
-        handler = create_console_handler()
-    logger.addHandler(handler)
+    coloredlogs.install(level=level, logger=logger, stream=stream,
+                        fmt=DEFAULT_FMT, datefmt=DATE_FMT)
     return
 
 
