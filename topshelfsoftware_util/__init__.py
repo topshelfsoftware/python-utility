@@ -3,6 +3,7 @@ from typing import List, Union
 
 from topshelfsoftware_util.common import logger as common_logger
 from topshelfsoftware_util.io import logger as io_logger
+from topshelfsoftware_util.json import logger as json_logger
 from topshelfsoftware_util.platform import logger as platform_logger
 
 PACKAGE_NAME = "topshelfsoftware-util"
@@ -19,7 +20,7 @@ def debug():
 def get_package_loggers() -> List[logging.Logger]:
     """Retrieve a list of the Loggers used in the package."""
     loggers = [
-        common_logger, io_logger, platform_logger
+        common_logger, io_logger, json_logger, platform_logger
     ]
     return loggers
 

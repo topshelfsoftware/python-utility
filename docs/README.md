@@ -14,6 +14,10 @@ Define custom exceptions.
 
 Support for processing input/output.
 
+### `json`
+
+Work with JSON data.
+
 ### `log`
 
 Supports logging functionality including creation of a logger and managing handlers.
