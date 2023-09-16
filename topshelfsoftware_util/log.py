@@ -51,6 +51,32 @@ def get_logger(name: str,
     return logger
 
 
+def add_log_stream(logger: logging.Logger,
+                   level: Union[int, str] = None,
+                   stream: TextIO = sys.stderr) -> None:
+    """Send logs to an IO stream.
+    
+    Parameters
+    ----------
+    logger: logging.Logger
+        An existing logger.
+
+    level: logging._Level, optional
+        The logging level to set the logger.
+        Default is None, which means use the logger's effective
+        logging level.
+    
+    stream: TextIO, optional
+        The stream where log messages should be written to
+        (a file-like object).
+        Default adds stream to stderr.
+    """
+    level = logger.getEffectiveLevel() if level is None else level
+    coloredlogs.install(level=level, logger=logger, stream=stream,
+                        fmt=DEFAULT_FMT, datefmt=DATE_FMT)
+    return
+
+
 def create_console_handler(fmt: str = DEFAULT_FMT,
                            date_fmt: str = DATE_FMT) -> logging.StreamHandler:
     """Create a formatted stream handler.
@@ -74,30 +100,6 @@ def create_console_handler(fmt: str = DEFAULT_FMT,
     handler = logging.StreamHandler(stream=sys.stdout)
     handler.setFormatter(formatter)
     return handler
-
-
-def add_log_stream(logger: logging.Logger,
-                   level: Union[int, str] = logging.INFO,
-                   stream: TextIO = sys.stderr) -> None:
-    """Send logs to an IO stream.
-    
-    Parameters
-    ----------
-    logger: logging.Logger
-        An existing logger.
-
-    level: logging._Level, optional
-        The logging level to set the logger.
-        Default is `logging.INFO`.
-    
-    stream: TextIO, optional
-        The stream where log messages should be written to
-        (a file-like object).
-        Default adds stream to stderr.
-    """
-    coloredlogs.install(level=level, logger=logger, stream=stream,
-                        fmt=DEFAULT_FMT, datefmt=DATE_FMT)
-    return
 
 
 def clear_root_handlers() -> None:
