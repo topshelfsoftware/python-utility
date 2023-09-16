@@ -17,7 +17,7 @@ tags = [
     "CustomerId=00000"
 ]
 parameter_overrides = [
-    "PackageVersion=v0.2.0"
+    "PackageVersion=v1.0.0"
 ]
 
 [prod.deploy.parameters]
@@ -30,5 +30,5 @@ tags = [
     "CustomerId=00000"
 ]
 parameter_overrides = [
-    "PackageVersion=v0.2.0"
+    "PackageVersion=v1.0.0"
 ]
