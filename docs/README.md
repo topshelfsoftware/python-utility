@@ -2,10 +2,6 @@
 
 ## Available Modules
 
-### `aws`
-
-Facilitates interaction with AWS using boto3 clients.
-
 ### `common`
 
 Helper functions for data retrieval and common programmatic actions.
