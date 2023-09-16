@@ -16,9 +16,7 @@ capabilities = "CAPABILITY_IAM"
 tags = [
     "CustomerId=00000"
 ]
-parameter_overrides = [
-    "PackageVersion=v1.0.0"
-]
+parameter_overrides = []
 
 [prod.deploy.parameters]
 region = "us-west-2"
@@ -29,6 +27,4 @@ capabilities = "CAPABILITY_IAM"
 tags = [
     "CustomerId=00000"
 ]
-parameter_overrides = [
-    "PackageVersion=v1.0.0"
-]
+parameter_overrides = []

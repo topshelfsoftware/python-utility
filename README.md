@@ -38,7 +38,7 @@ Search the project for the existing package version and update in the following 
 
 - `PKG_VER` variable in the project `Makefile`
 - `version` in the poetry `pyproject.toml`
-- `PackageVersion` parameter in the `samconfig.toml`
+- `PackageVersion` parameter in the `template.yaml`
 - `topshelfsoftware-util` package in the `lambda_layer/no_deps/requirements.txt`
 
 ## Tagging
