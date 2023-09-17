@@ -7,7 +7,7 @@ from tempfile import gettempdir, mkdtemp
 from typing import Iterator
 
 from topshelfsoftware_util.log import get_logger
-logger = get_logger(__name__)
+logger = get_logger(__name__, stream=None)
 
 
 @contextmanager

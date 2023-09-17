@@ -7,13 +7,11 @@ from topshelfsoftware_util.json import logger as json_logger
 from topshelfsoftware_util.platform import logger as platform_logger
 
 PACKAGE_NAME = "topshelfsoftware-util"
-LOG_LEVEL = logging.INFO
 
 
 def debug():
     """Set the package Loggers to the DEBUG level."""
-    LOG_LEVEL = logging.DEBUG
-    _set_logger_levels(level=LOG_LEVEL)
+    _set_logger_levels(level=logging.DEBUG)
     return
 
 
@@ -32,7 +30,3 @@ def _set_logger_levels(level: Union[int, str]):
         for handler in logger.handlers:
             handler.setLevel(level)
     return
-
-
-# initialize all package logger levels
-_set_logger_levels(level=LOG_LEVEL)

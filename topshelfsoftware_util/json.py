@@ -3,7 +3,7 @@
 import json
 
 from topshelfsoftware_util.log import get_logger
-logger = get_logger(__name__)
+logger = get_logger(__name__, stream=None)
 
 
 def fmt_json(input: dict) -> str:
