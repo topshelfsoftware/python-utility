@@ -2,32 +2,72 @@
 
 A collection of python utilities.
 
-## Makefile
+## Getting Started
 
-A `Makefile` is provided to standardize building and publishing the Python package. Satisfy the following prerequisites to be successful:
+### Prerequisites
 
-- Install Python 3.9 and add to PATH (executable name assumed to be `python3.9`)
-- Create a file named `local_pypi_dir.txt` in the project root directory (same folder as this `README`)
-  - Contents of file are a single line defining the path to a local directory to be used as a local PyPI repository
+1. Python 3.11 installed with "python3.11" on system path
+2. `aws-sam-cli` with "sam" on system path
+3. Create a file named `local_pypi_dir.txt` in the project root directory (same folder as this `README`)
+    - Contents of file are a single line defining the path to a local directory to be used as a local PyPI repository.
 
-### Project Dependencies
+### Set Up Environment
 
-Install project dependencies by running the following command one time
-
-```bash
-# install project deps such as poetry
-make install
-```
-
-### Build Instructions
-
-Simply navigate to the same folder as this `README`, and run the following command to build and publish the utility package to a local PyPI repo.
+To create the dev environment, navigate to the project root directory and run the following
 
 ```bash
-make
+make setup
 ```
 
-This command activates the virtual environment with `poetry`, builds the package as a wheel and copies it to the local PyPI repository.
+>NOTE: This command creates a virtual environment to `./.venv` and downloads all the
+packages required to debug/test the source code as well as other developer tools.
+
+If the dev environment has already been setup, then the dependencies can be updated with
+
+```bash
+make update
+```
+
+### Unit Tests
+
+Unit tests are located in the `./tests` directory and are written using `pytest`.
+To run all unit tests, execute the following command from the project root directory
+>NOTE: For tests to pass, authentication to the correct AWS account is required
+
+```bash
+make test
+```
+
+### Formatting and Linting
+
+To ensure consistent style and catch potential errors, this repo formats Python code using `black` and
+lints Python code using `ruff`. To format and then lint, run
+
+```bash
+make format
+```
+
+## Deployment
+
+>NOTE: AWS deployment targets also require user be authenticated with relevant AWS account
+
+### Package and Lambda Layer
+
+Build the `topshelfsoftware-util` Python package as a wheel and copy it to the local PyPI repository
+
+```bash
+make package
+```
+
+Further, deploy the package as a Lambda layer with
+
+```bash
+make deploy-layer-prod 
+
+# OR
+
+make deploy-layer-devl 
+```
 
 ## Versioning
 
@@ -40,20 +80,6 @@ Search the project for the existing package version and update in the following 
 - `version` in the poetry `pyproject.toml`
 - `PackageVersion` parameter in the `template.yaml`
 - `topshelfsoftware-util` package in the `lambda_layer/deps/requirements.txt`
-
-## Tagging
-
-After incrementing the package version (and merging PR), create an associated tag of the repository. Perform the following from the command line:
-
-```bash
-git tag -a <version> <commit_hash>
-```
-
-`<version>` will take the form vX.Y.Z where X.Y.Z represents MAJOR.MINOR.PATCH in semantic versioning. Then push the tag to the remote server using:
-
-```bash
-git push origin <version>
-```
 
 ## Available Modules
 
