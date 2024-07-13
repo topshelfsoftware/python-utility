@@ -3,6 +3,7 @@
 import json
 
 from topshelfsoftware_util.log import get_logger
+
 logger = get_logger(__name__, stream=None)
 
 

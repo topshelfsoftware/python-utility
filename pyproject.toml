@@ -1,3 +1,7 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.poetry]
 name = "topshelfsoftware_util"
 version = "1.0.0"
@@ -13,6 +17,13 @@ repository = "https://github.com/topshelfsoftware/python-utility"
 python = "^3.7"
 coloredlogs = "^15"  # MIT license
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.black]
+line-length = 79
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+ignore = []
+extend-select = ["C901", "E501"]
+mccabe.max-complexity = 10

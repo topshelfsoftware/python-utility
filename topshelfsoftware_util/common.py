@@ -5,6 +5,7 @@ import time
 from typing import List, Union
 
 from topshelfsoftware_util.log import get_logger
+
 logger = get_logger(__name__, stream=None)
 
 
