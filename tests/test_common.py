@@ -24,7 +24,11 @@ logger = get_logger(f"test_{MODULE}", stream=sys.stdout)
 # ----------------------------------------------------------------------------#
 #                           --- Module Imports ---                            #
 # ----------------------------------------------------------------------------#
-from topshelfsoftware_util.common import delay, unique, is_executable  # noqa: E402
+from topshelfsoftware_util.common import (  # noqa: E402
+    delay,
+    unique,
+    is_executable,
+)
 
 
 # ----------------------------------------------------------------------------#
@@ -55,9 +59,9 @@ def test_02_unique(get_event_as_dict):
     type_str: str = get_event_as_dict["input"]["type"]
     expected: list = get_event_as_dict["expected_output"]["unique_values"]
     unique_values = unique(values)
-    assert \
-        all(isinstance(item, eval(type_str)) for item in unique_values), \
-        f"Not all elements are of type {type_str}"
+    assert all(
+        isinstance(item, eval(type_str)) for item in unique_values
+    ), f"Not all elements are of type {type_str}"
     assert set(unique_values).issuperset(set(expected))
 
 
