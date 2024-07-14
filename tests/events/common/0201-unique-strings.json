@@ -1,0 +1,21 @@
+{
+    "description": "Verify supplied list of strings is unique",
+    "input": {
+        "values": [
+            "hi",
+            "hello",
+            "hola",
+            "hello",
+            "hola",
+            "hi"
+        ],
+        "type": "str"
+    },
+    "expected_output": {
+        "unique_values": [
+            "hi",
+            "hello",
+            "hola"
+        ]
+    }
+}

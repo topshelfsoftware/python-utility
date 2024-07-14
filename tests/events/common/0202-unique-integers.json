@@ -1,0 +1,21 @@
+{
+    "description": "Verify supplied list of integers is unique",
+    "input": {
+        "values": [
+            1,
+            2,
+            3,
+            3,
+            2,
+            1
+        ],
+        "type": "int"
+    },
+    "expected_output": {
+        "unique_values": [
+            1,
+            2,
+            3
+        ]
+    }
+}

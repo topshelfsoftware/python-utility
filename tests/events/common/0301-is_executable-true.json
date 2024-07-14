@@ -1,0 +1,7 @@
+{
+    "description": "Verify python3 executable returns True",
+    "input": {
+        "executable": "python3"
+    },
+    "expected_output": true
+}

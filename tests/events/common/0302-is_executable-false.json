@@ -1,0 +1,7 @@
+{
+    "description": "Verify fake executable returns False",
+    "input": {
+        "executable": "a_program_name_that_definitely_does_not_exist"
+    },
+    "expected_output": false
+}
