@@ -1,0 +1,13 @@
+{
+    "description": "Verify a logger is configured as INFO streaming to sys.stdout",
+    "input": {
+        "name": "0102-unit_test_logger",
+        "level": "INFO",
+        "stream": "sys.stdout"
+    },
+    "expected_output": {
+        "name": "0102-unit_test_logger",
+        "level": 20,
+        "propagate": false
+    }
+}
