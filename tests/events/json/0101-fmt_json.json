@@ -1,0 +1,9 @@
+{
+    "description": "Verify the object is formatted as a JSON string",
+    "input": {
+        "key1": 1,
+        "key2": "a",
+        "key3": true
+    },
+    "expected_output": "{\"key1\": 1, \"key2\": \"a\", \"key3\": true}"
+}
