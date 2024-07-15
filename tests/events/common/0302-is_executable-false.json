@@ -1,5 +1,5 @@
 {
-    "description": "Verify non-existent executable returns False",
+    "description": "Verify non-existent command is NOT identified as an executable",
     "input": {
         "executable": "a_program_name_that_definitely_does_not_exist"
     },

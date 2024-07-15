@@ -1,5 +1,5 @@
 {
-    "description": "Verify each package logger is set to the DEBUG logging level",
+    "description": "Verify each package logger exists and is set to the DEBUG logging level",
     "input": {},
     "expected_output": {}
 }

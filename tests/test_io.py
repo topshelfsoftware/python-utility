@@ -54,5 +54,6 @@ def test_01_cdtmp(get_event_as_dict):
 
     if not cleanup:
         # cleanup the tmpdir as part of this test
+        logger.info("cleaning up test...")
         shutil.rmtree(tmpdir, ignore_errors=True)
         logger.info(f"deleted temp directory: {tmpdir}")
