@@ -10,7 +10,7 @@ AWS_REGION ?= us-east-1
 LOCAL_PYPI_FP := $(PROJ_ROOT_DIR)/local_pypi_dir.txt
 LOCAL_PYPI_DIR := $(shell cat ${LOCAL_PYPI_FP})
 PKG_NAME := topshelfsoftware_util
-PKG_VER := 1.0.0
+PKG_VER := 1.1.0
 
 ####### BUILD TARGETS #######
 
