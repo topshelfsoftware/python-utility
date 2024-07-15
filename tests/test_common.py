@@ -1,10 +1,12 @@
+import logging
 import os
 import sys
 import time
 
 import pytest
 
-from topshelfsoftware_util.log import get_logger
+from topshelfsoftware_util.common import logger as common_logger
+from topshelfsoftware_util.log import add_log_stream, get_logger
 
 from conftest import get_json_files
 
@@ -20,6 +22,7 @@ MODULE_EVENTS_DIR = os.path.join(TEST_EVENTS_PATH, MODULE)
 #                               --- Logging ---                               #
 # ----------------------------------------------------------------------------#
 logger = get_logger(f"test_{MODULE}", stream=sys.stdout)
+add_log_stream(common_logger, level=logging.DEBUG, stream=sys.stdout)
 
 # ----------------------------------------------------------------------------#
 #                           --- Module Imports ---                            #
