@@ -1,0 +1,10 @@
+{
+    "description": "Verify temp directory is created and retained",
+    "input": {
+        "tmpdir": "temp/",
+        "cleanup": false
+    },
+    "expected_output": {
+        "tmpdir_exists": true
+    }
+}
