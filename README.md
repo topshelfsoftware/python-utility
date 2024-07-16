@@ -62,11 +62,7 @@ make package
 Further, deploy the package as a Lambda layer with
 
 ```bash
-make deploy-layer-prod 
-
-# OR
-
-make deploy-layer-devl 
+make deploy-layer AWS_PROFILE=<aws-profile> S3_BUCKET=<s3-bucket> TAGS="CustomerId={cid} ProjectId={pid}" [AWS_REGION=us-east-1]
 ```
 
 ## Versioning

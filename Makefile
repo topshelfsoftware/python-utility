@@ -1,12 +1,18 @@
 .PHONY: setup update clean \
 		format lint test package \
-		deploy-layer-prod deploy-layer-devl
+		deploy-layer
 
+####### USER INPUTS #######
+AWS_PROFILE :=				# required, no default value
+AWS_REGION ?= us-east-1
+S3_BUCKET :=				# required, no default value
+TAGS := 					# required, no default value
+
+####### CONSTANTS #######
 PROJ_ROOT_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 VENV_DIR := $(PROJ_ROOT_DIR)/.venv
 PKG_DIR := $(PROJ_ROOT_DIR)/package
 PYTHON := python3.11
-AWS_REGION ?= us-east-1
 LOCAL_PYPI_FP := $(PROJ_ROOT_DIR)/local_pypi_dir.txt
 LOCAL_PYPI_DIR := $(shell cat ${LOCAL_PYPI_FP})
 PKG_NAME := topshelfsoftware_util
@@ -77,12 +83,14 @@ package:
 		cp $(PROJ_ROOT_DIR)/dist/$(PKG_NAME)-$(PKG_VER)*.whl $(LOCAL_PYPI_DIR)
 
 # Lambda layer deployment
-deploy-layer-prod:
-	sam build --config-file $(PROJ_ROOT_DIR)/samconfig.toml && \
-		sam deploy --config-file $(PROJ_ROOT_DIR)/samconfig.toml && \
-		--config-env prod --region $(AWS_REGION) --s3-bucket $(S3_BUCKET) --tags $(TAGS)
+deploy-layer: check-user-inp
+	export AWS_PROFILE=$(AWS_PROFILE) && \
+		sam build --config-file $(PROJ_ROOT_DIR)/samconfig.toml && \
+		sam deploy --config-file $(PROJ_ROOT_DIR)/samconfig.toml --config-env default --region $(AWS_REGION) --s3-bucket $(S3_BUCKET) --tags $(TAGS)
 
-deploy-layer-devl:
-	sam build --config-file $(PROJ_ROOT_DIR)/samconfig.toml && \
-		sam deploy --config-file $(PROJ_ROOT_DIR)/samconfig.toml && \
-		--config-env devl --region $(AWS_REGION) --s3-bucket $(S3_BUCKET) --tags $(TAGS)
+# ensure the required variables are defined by the user
+check-user-inp:
+	$(if $(AWS_PROFILE),,$(error AWS_PROFILE is undefined. Usage: make deploy-layer AWS_PROFILE=<aws-profile> S3_BUCKET=<s3-bucket> TAGS="CustomerId={cid} ProjectId={pid}" [AWS_REGION=us-east-1]))
+	$(if $(AWS_REGION),,$(error AWS_REGION is undefined. Usage: make deploy-layer AWS_PROFILE=<aws-profile> S3_BUCKET=<s3-bucket> TAGS="CustomerId={cid} ProjectId={pid}" [AWS_REGION=us-east-1]))
+	$(if $(S3_BUCKET),,$(error S3_BUCKET is undefined. Usage: make deploy-layer AWS_PROFILE=<aws-profile> S3_BUCKET=<s3-bucket> TAGS="CustomerId={cid} ProjectId={pid}" [AWS_REGION=us-east-1]))
+	$(if $(TAGS),,$(error TAGS is undefined. Usage: make deploy-layer AWS_PROFILE=<aws-profile> S3_BUCKET=<s3-bucket> TAGS="CustomerId={cid} ProjectId={pid}" [AWS_REGION=us-east-1]))
