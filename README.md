@@ -74,7 +74,7 @@ Search the project for the existing package version and update in the following 
 
 - `PKG_VER` variable in the project `Makefile`
 - `version` in the poetry `pyproject.toml`
-- `PackageVersion` parameter (2x) in the `samconfig.toml`
+- `PackageVersion` parameter in the `samconfig.toml`
 - `topshelfsoftware-util` package in the `lambda_layer/deps/requirements.txt`
 
 ## Available Modules
