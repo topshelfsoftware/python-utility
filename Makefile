@@ -12,9 +12,15 @@ TAGS := 					# required, no default value
 PROJ_ROOT_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 VENV_DIR := $(PROJ_ROOT_DIR)/.venv
 PKG_DIR := $(PROJ_ROOT_DIR)/package
-PYTHON := python3.11
+PYTHON3 := python3
 LOCAL_PYPI_FP := $(PROJ_ROOT_DIR)/local_pypi_dir.txt
-LOCAL_PYPI_DIR := $(shell cat ${LOCAL_PYPI_FP})
+ifeq ($(wildcard $(LOCAL_PYPI_FP)),)
+# file does not exist
+	LOCAL_PYPI_DIR :=
+else
+# file exists
+    LOCAL_PYPI_DIR := $(shell cat ${LOCAL_PYPI_FP})
+endif
 PKG_NAME := topshelfsoftware_util
 PKG_VER := 1.1.0
 
@@ -30,8 +36,8 @@ update: setup pip-install pre-commit-install
 
 $(VENV_DIR)/bin/activate:
 	@$(MAKE) clean
-	@echo "Setting up development environment using $(PYTHON)..."
-	$(PYTHON) -m venv $(VENV_DIR)
+	@echo "Setting up development environment using $(PYTHON3)..."
+	$(PYTHON3) -m venv $(VENV_DIR)
 	@$(MAKE) pip-install
 	@$(MAKE) pre-commit-install
 	@echo "Development environment setup complete."
@@ -80,7 +86,10 @@ test-no-cov:
 # Python package
 package:
 	$(VENV_DIR)/bin/poetry build --format wheel && \
-		cp $(PROJ_ROOT_DIR)/dist/$(PKG_NAME)-$(PKG_VER)*.whl $(LOCAL_PYPI_DIR)
+	if [ -d "$(LOCAL_PYPI_DIR)" ]; then \
+		cp $(PROJ_ROOT_DIR)/dist/$(PKG_NAME)-$(PKG_VER)*.whl $(LOCAL_PYPI_DIR) && \
+		echo "Copied wheel to $(LOCAL_PYPI_DIR)"; \
+	fi
 
 # Lambda layer deployment
 deploy-layer: check-user-inp

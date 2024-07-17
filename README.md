@@ -6,9 +6,9 @@ A collection of python utilities.
 
 ### Prerequisites
 
-1. Python 3.11 installed with "python3.11" on system path
+1. Python 3.7 | 3.8 | 3.9 | 3.10 | 3.11 installed on system
 2. `aws-sam-cli` with "sam" on system path
-3. Create a file named `local_pypi_dir.txt` in the project root directory (same folder as this `README`)
+3. Optionally, create a file named `local_pypi_dir.txt` in the project root directory (same folder as this `README`)
     - Contents of file are a single line defining the path to a local directory to be used as a local PyPI repository.
 
 ### Set Up Environment
@@ -16,16 +16,17 @@ A collection of python utilities.
 To create the dev environment, navigate to the project root directory and run the following
 
 ```bash
-make setup
+make setup [PYTHON3=python3]
 ```
 
 >NOTE: This command creates a virtual environment to `./.venv` and downloads all the
-packages required to debug/test the source code as well as other developer tools.
+packages required to debug/test the source code as well as other developer tools. Specify
+a minor version of Python 3 using the `PYTHON3=python3.<minor>` arg.
 
 If the dev environment has already been setup, then the dependencies can be updated with
 
 ```bash
-make update
+make update [PYTHON3=python3]
 ```
 
 ### Unit Tests
