@@ -6,7 +6,7 @@ A collection of python utilities.
 
 ### Prerequisites
 
-1. Python 3.7 | 3.8 | 3.9 | 3.10 | 3.11 installed on system
+1. Python 3.9 | 3.10 | 3.11 | 3.12 installed on system
 2. `aws-sam-cli` with "sam" on system path
 3. Optionally, create a file named `local_pypi_dir.txt` in the project root directory (same folder as this `README`)
     - Contents of file are a single line defining the path to a local directory to be used as a local PyPI repository.
