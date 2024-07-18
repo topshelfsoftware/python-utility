@@ -78,7 +78,7 @@ lint:
 # Run all tests
 test:
 	$(VENV_DIR)/bin/pytest -s -v -c $(PROJ_ROOT_DIR)/tests/pytest.ini \
-		--cov --cov-report term --cov-report html --cov-config $(PROJ_ROOT_DIR)/tests/.coveragerc
+		--cov --cov-report term --cov-report html --cov-report xml --cov-config $(PROJ_ROOT_DIR)/tests/.coveragerc
 
 test-no-cov:
 	$(VENV_DIR)/bin/pytest -s -v -c $(PROJ_ROOT_DIR)/tests/pytest.ini
