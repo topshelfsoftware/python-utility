@@ -4,7 +4,7 @@ A collection of python utilities.
 
 | | |
 | --- | --- |
-| Testing | [![CI - Test](https://github.com/topshelfsoftware/python-utility/actions/workflows/unit-tests.yaml/badge.svg)](https://github.com/topshelfsoftware/python-utility/actions/workflows/unit-tests.yaml) [![Coverage](https://codecov.io/github/topshelfsoftware/python-utility/coverage.svg?branch=main)](https://codecov.io/gh/topshelfsoftware/python-utility) |
+| Testing | [![CI - Test](https://github.com/topshelfsoftware/python-utility/actions/workflows/unit-tests.yaml/badge.svg)](https://github.com/topshelfsoftware/python-utility/actions/workflows/unit-tests.yaml) [![codecov](https://codecov.io/gh/topshelfsoftware/python-utility/graph/badge.svg?token=OISAX9L8TV)](https://codecov.io/gh/topshelfsoftware/python-utility) |
 | Package | [![Build Status](https://github.com/topshelfsoftware/python-utility/actions/workflows/build.yaml/badge.svg)](https://github.com/topshelfsoftware/python-utility/actions/workflows/build.yaml) ![Package Version](https://img.shields.io/badge/latest-v1.1.0-blue) ![Python Versions](https://img.shields.io/badge/python-3.9_%7C_3.10_%7C_3.11_%7C_3.12-blue?logo=python&logoColor=yellow) |
 | Meta | ![License](https://img.shields.io/github/license/topshelfsoftware/python-utility.svg) |
 

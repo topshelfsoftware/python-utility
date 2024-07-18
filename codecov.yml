@@ -8,3 +8,7 @@ coverage:
 comment:
   layout: "header, diff, changes"
   behavior: default
+  require_changes: false
+  require_base: no
+  require_head: no
+  sticky: true
