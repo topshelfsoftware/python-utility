@@ -139,4 +139,5 @@ dmypy.json
 
 # project files
 local_pypi_dir.txt
+config.ini
 *artifacts/

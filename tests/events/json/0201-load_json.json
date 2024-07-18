@@ -1,0 +1,13 @@
+{
+    "description": "Verify the JSON file is loaded into a dictionary",
+    "input": {
+        "key1": 1,
+        "key2": "a",
+        "key3": true
+    },
+    "expected_output": {
+        "key1": 1,
+        "key2": "a",
+        "key3": true
+    }
+}

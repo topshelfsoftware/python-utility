@@ -1,0 +1,7 @@
+{
+    "description": "Verify the wait time meets the specified delay",
+    "input": {
+        "delay_s": 0.1
+    },
+    "expected_output": {}
+}

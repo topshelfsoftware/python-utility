@@ -1,0 +1,10 @@
+{
+    "description": "Verify temp directory is created and then removed",
+    "input": {
+        "tmpdir": null,
+        "cleanup": true
+    },
+    "expected_output": {
+        "tmpdir_exists": false
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "description": "Verify python3 command is identified as an executable",
+    "input": {
+        "executable": "python3"
+    },
+    "expected_output": true
+}

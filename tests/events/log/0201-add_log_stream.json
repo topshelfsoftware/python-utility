@@ -1,0 +1,12 @@
+{
+    "description": "Verify a stream is added to a provided logger",
+    "input": {
+        "name": "0201-unit_test_logger",
+        "stream": "sys.stdout"
+    },
+    "expected_output": {
+        "name": "0201-uunit_test_logger",
+        "level": 20,
+        "propagate": false
+    }
+}

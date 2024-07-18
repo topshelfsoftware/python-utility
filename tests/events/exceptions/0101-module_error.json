@@ -1,0 +1,9 @@
+{
+    "description": "Verify ModuleError is raised",
+    "input": {
+        "exc_msg": "Testing out the ModuleError exception"
+    },
+    "expected_output": {
+        "exc_msg": "Testing out the ModuleError exception"
+    }
+}

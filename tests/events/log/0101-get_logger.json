@@ -1,0 +1,12 @@
+{
+    "description": "Verify a logger is configured as DEBUG streaming to sys.stderr",
+    "input": {
+        "name": "0101-unit_test_logger",
+        "level": "DEBUG"
+    },
+    "expected_output": {
+        "name": "0101-unit_test_logger",
+        "level": 10,
+        "propagate": false
+    }
+}

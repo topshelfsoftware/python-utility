@@ -1,0 +1,7 @@
+[run]
+source = 
+    topshelfsoftware_util
+
+[report]
+omit =
+    tests/*

@@ -1,0 +1,5 @@
+{
+    "description": "Verify handlers for the root logger are cleared",
+    "input": {},
+    "expected_output": {}
+}
