@@ -1,7 +1,6 @@
-name: Build Python Package
+name: Package Build
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - testing/add-tests

@@ -1,7 +1,6 @@
-name: Run Unit Tests
+name: Unit Tests
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - testing/add-tests
