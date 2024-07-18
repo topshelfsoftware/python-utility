@@ -6,7 +6,7 @@ A collection of python utilities.
 | --- | --- |
 | Testing | [![CI - Test](https://github.com/topshelfsoftware/python-utility/actions/workflows/unit-tests.yaml/badge.svg)](https://github.com/topshelfsoftware/python-utility/actions/workflows/unit-tests.yaml) [![codecov](https://codecov.io/gh/topshelfsoftware/python-utility/graph/badge.svg?token=OISAX9L8TV)](https://codecov.io/gh/topshelfsoftware/python-utility) |
 | Package | [![Build Status](https://github.com/topshelfsoftware/python-utility/actions/workflows/build.yaml/badge.svg)](https://github.com/topshelfsoftware/python-utility/actions/workflows/build.yaml) ![Package Version](https://img.shields.io/badge/latest-v1.1.0-blue) ![Python Versions](https://img.shields.io/badge/python-3.9_%7C_3.10_%7C_3.11_%7C_3.12-blue?logo=python&logoColor=yellow) |
-| Meta | ![License](https://img.shields.io/github/license/topshelfsoftware/python-utility) |
+| Meta | [![License](https://img.shields.io/github/license/topshelfsoftware/python-utility)](https://github.com/topshelfsoftware/python-utility/blob/main/LICENSE) |
 
 ## Getting Started
 
@@ -39,7 +39,6 @@ make update [PYTHON3=python3]
 
 Unit tests are located in the `./tests` directory and are written using `pytest`.
 To run all unit tests, execute the following command from the project root directory
->NOTE: For tests to pass, authentication to the correct AWS account is required
 
 ```bash
 make test
