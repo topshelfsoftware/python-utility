@@ -6,9 +6,9 @@ coverage:
         threshold: 1%
 
 comment:
-  layout: "header, diff, changes"
+  layout: "header, diff, files"
   behavior: default
   require_changes: false
-  require_base: no
-  require_head: no
-  sticky: true
+  require_base: false
+  require_head: false
+  hide_project_coverage: false
