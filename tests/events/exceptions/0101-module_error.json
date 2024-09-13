@@ -1,9 +1,9 @@
 {
-    "description": "Verify ModuleError is raised",
+    "description": "Verify ModuleError is raised and inherits from the RuntimeError class",
     "input": {
-        "exc_msg": "Testing out the ModuleError exception"
+        "exc_msg": "Testing out the ModuleError runtime error"
     },
     "expected_output": {
-        "exc_msg": "Testing out the ModuleError exception"
+        "exc_msg": "Testing out the ModuleError runtime error"
     }
 }
