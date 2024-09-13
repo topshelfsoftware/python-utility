@@ -22,7 +22,7 @@ else
     LOCAL_PYPI_DIR := $(shell cat ${LOCAL_PYPI_FP})
 endif
 PKG_NAME := topshelfsoftware_util
-PKG_VER := 1.1.0
+PKG_VER := 2.0.0
 
 ####### BUILD TARGETS #######
 
