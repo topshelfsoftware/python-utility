@@ -6,7 +6,7 @@ import time
 import pytest
 
 from topshelfsoftware_util.common import logger as common_logger
-from topshelfsoftware_util.log import add_log_stream, get_logger
+from topshelfsoftware_logging import add_log_stream, get_logger
 
 from conftest import get_json_files
 

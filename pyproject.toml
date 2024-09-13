@@ -15,7 +15,7 @@ repository = "https://github.com/topshelfsoftware/python-utility"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-coloredlogs = "^15"  # MIT license
+topshelfsoftware_logging = { git = "https://github.com/topshelfsoftware/python-logging.git", tag = "v1.0.0" }
 
 [tool.black]
 line-length = 79
