@@ -43,6 +43,6 @@ def test_01_module_error(get_event_as_dict):
         try:
             raise ModuleError(exc_msg_input)
         except ModuleError as e:
-            assert e.value == expected_output
+            assert str(e) == expected_output
             logger.error(e)
             raise e
