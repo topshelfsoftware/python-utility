@@ -5,7 +5,7 @@ import pytest
 
 from topshelfsoftware_logging import get_logger
 
-from conftest import get_json_files
+from conftest import get_json_files, print_section_break
 
 # ----------------------------------------------------------------------------#
 #                               --- Globals ---                               #
@@ -35,6 +35,7 @@ from topshelfsoftware_util.exceptions import ModuleError  # noqa: E402
     "event_file", get_json_files(MODULE_EVENTS_DIR, ["module_error"])
 )
 def test_01_module_error(get_event_as_dict):
+    print_section_break()
     logger.info(f"Test Description: {get_event_as_dict['description']}")
     exc_msg_input: str = get_event_as_dict["input"]["exc_msg"]
     expected_output: str = get_event_as_dict["expected_output"]["exc_msg"]
