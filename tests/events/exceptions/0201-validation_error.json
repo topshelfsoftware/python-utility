@@ -1,0 +1,9 @@
+{
+    "description": "Verify ValidationError is raised and inherits from the Exception class",
+    "input": {
+        "exc_msg": "Testing out the ValidationError general exception"
+    },
+    "expected_output": {
+        "exc_msg": "Testing out the ValidationError general exception"
+    }
+}

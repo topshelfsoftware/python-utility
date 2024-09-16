@@ -5,9 +5,9 @@ import sys
 import pytest
 
 from topshelfsoftware_util.platform import logger as platform_logger
-from topshelfsoftware_util.log import add_log_stream, get_logger
+from topshelfsoftware_logging import add_log_stream, get_logger
 
-from conftest import get_json_files
+from conftest import get_json_files, print_section_break
 
 # ----------------------------------------------------------------------------#
 #                               --- Globals ---                               #
@@ -38,6 +38,7 @@ from topshelfsoftware_util.platform import Platform  # noqa: E402
     "event_file", get_json_files(MODULE_EVENTS_DIR, ["platform"])
 )
 def test_01_platform(get_event_as_dict):
+    print_section_break()
     logger.info(f"Test Description: {get_event_as_dict['description']}")
     if sys.platform.startswith("win"):
         logger.info("testing on Windows platform")

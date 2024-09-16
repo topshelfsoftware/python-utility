@@ -6,9 +6,9 @@ import sys
 import pytest
 
 from topshelfsoftware_util.json import logger as json_logger
-from topshelfsoftware_util.log import add_log_stream, get_logger
+from topshelfsoftware_logging import add_log_stream, get_logger
 
-from conftest import get_json_files
+from conftest import get_json_files, print_section_break
 
 # ----------------------------------------------------------------------------#
 #                               --- Globals ---                               #
@@ -30,7 +30,6 @@ add_log_stream(json_logger, level=logging.DEBUG, stream=sys.stdout)
 from topshelfsoftware_util.json import (  # noqa: E402
     fmt_json,
     load_json,
-    load_json_schema,
 )
 
 
@@ -43,6 +42,7 @@ from topshelfsoftware_util.json import (  # noqa: E402
     "event_file", get_json_files(MODULE_EVENTS_DIR, ["fmt_json"])
 )
 def test_01_fmt_json(get_event_as_dict):
+    print_section_break()
     logger.info(f"Test Description: {get_event_as_dict['description']}")
     input: dict = get_event_as_dict["input"]
     expected_output: str = get_event_as_dict["expected_output"]
@@ -56,21 +56,8 @@ def test_01_fmt_json(get_event_as_dict):
     "event_file", get_json_files(MODULE_EVENTS_DIR, ["load_json"])
 )
 def test_02_load_json(get_event_as_dict, event_dir, event_file):
+    print_section_break()
     logger.info(f"Test Description: {get_event_as_dict['description']}")
     file = Path(os.path.join(event_dir, event_file))
     full_dict = load_json(file)
     assert full_dict == get_event_as_dict
-
-
-1
-
-
-@pytest.mark.happy
-@pytest.mark.parametrize("event_dir", [MODULE_EVENTS_DIR])
-@pytest.mark.parametrize(
-    "event_file", get_json_files(MODULE_EVENTS_DIR, ["load_json_schema"])
-)
-def test_03_load_json_schema(get_event_as_dict, event_dir, event_file):
-    logger.info(f"Test Description: {get_event_as_dict['description']}")
-    full_schema = load_json_schema(os.path.join(event_dir, event_file))
-    assert full_schema == get_event_as_dict

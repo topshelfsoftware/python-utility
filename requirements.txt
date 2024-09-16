@@ -1,6 +1,6 @@
 --trusted-host files.pythonhosted.org --trusted-host pypi.org --trusted-host pypi.python.org 
 # package deps
-coloredlogs>=15
+topshelfsoftware-logging @ git+https://github.com/topshelfsoftware/python-logging.git@v1.0.0
 
 # dev tools
 poetry~=1.8

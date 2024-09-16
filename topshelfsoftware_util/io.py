@@ -7,7 +7,7 @@ import shutil
 from tempfile import mkdtemp
 from typing import Iterator, Union
 
-from topshelfsoftware_util.log import get_logger
+from topshelfsoftware_logging import get_logger
 
 logger = get_logger(__name__, stream=None)
 
