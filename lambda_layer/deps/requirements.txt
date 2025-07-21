@@ -1,1 +1,1 @@
-topshelfsoftware-util @ git+https://github.com/topshelfsoftware/python-utility.git@v2.0.0
+topshelfsoftware-util==2.0.0
