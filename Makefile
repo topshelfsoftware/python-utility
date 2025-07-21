@@ -36,7 +36,7 @@ update: setup pip-install pre-commit-install
 $(VENV_DIR)/bin/activate:
 	@$(MAKE) clean
 	@echo "Setting up development environment using $(PYTHON3)..."
-	$(PYTHON3) -m venv $(VENV_DIR)
+	$(PYTHON3) -m venv $(VENV_DIR) --upgrade-deps
 	@$(MAKE) pip-install
 	@$(MAKE) pre-commit-install
 	@echo "Development environment setup complete."
@@ -53,7 +53,7 @@ pip-install:
 		-path '*/.aws-sam' -prune -o \
 		-path '*/lambda_layer' -prune -o \
 		-name 'requirements.txt' -print0 | \
-		xargs -0 -I {} sh -c '$(VENV_DIR)/bin/pip install -r "$$1"' _ {}
+		xargs -0 -I {} $(VENV_DIR)/bin/pip install -r {}
 
 pre-commit-install:
 	@echo "Installing pre-commit hooks..."
