@@ -31,29 +31,30 @@ PKG_VER := 2.0.0
 # virtual env, install packages, and/or install pre-commit hooks.
 setup: $(VENV_DIR)/bin/activate $(VENV_DIR)/bin/pre-commit
 
-update: setup pip-install pre-commit-install
+update: setup uv-install pre-commit-install
 
 $(VENV_DIR)/bin/activate:
 	@$(MAKE) clean
 	@echo "Setting up development environment using $(PYTHON3)..."
 	$(PYTHON3) -m venv $(VENV_DIR) --upgrade-deps
-	@$(MAKE) pip-install
+	@$(MAKE) uv-install
 	@$(MAKE) pre-commit-install
 	@echo "Development environment setup complete."
 
 $(VENV_DIR)/bin/pre-commit:
-	@$(MAKE) pip-install
+	@$(MAKE) uv-install
 	@$(MAKE) pre-commit-install
 
-pip-install:
-	@echo "Upgrading pip..."
+uv-install:
+	@echo "Upgrading uv..."
 	$(VENV_DIR)/bin/pip install --upgrade pip
+	$(VENV_DIR)/bin/pip install --upgrade uv
 	@echo "Installing required Python packages..."
 	@find $(PROJ_ROOT_DIR) \
 		-path '*/.aws-sam' -prune -o \
 		-path '*/lambda_layer' -prune -o \
 		-name 'requirements.txt' -print0 | \
-		xargs -0 -I {} $(VENV_DIR)/bin/pip install -r {}
+		xargs -0 -I {} $(VENV_DIR)/bin/uv pip install -r {}
 
 pre-commit-install:
 	@echo "Installing pre-commit hooks..."
